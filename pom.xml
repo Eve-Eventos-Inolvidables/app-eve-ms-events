@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>app-eve-ms-events</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<name>app-eve-ms-events</name>
 	<description>app-eve-ms-events</description>
 	<url/>
@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.example</groupId>
 			<artifactId>app-eve-common</artifactId>
-			<version>0.3.5</version>
+			<version>0.3.9</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
