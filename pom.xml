@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.example</groupId>
 			<artifactId>app-eve-common</artifactId>
-			<version>0.3.10</version>
+			<version>0.3.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-			<version>2.2.0</version>
+			<version>3.1.1</version>
 		</dependency>
 	</dependencies>
 
