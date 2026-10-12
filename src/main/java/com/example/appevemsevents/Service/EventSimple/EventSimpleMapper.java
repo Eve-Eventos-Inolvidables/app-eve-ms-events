@@ -2,6 +2,7 @@ package com.example.appevemsevents.Service.EventSimple;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.openapitools.model.CreateEventTransDto;
 import org.openapitools.model.CreateSimpleEventDto;
 import org.openapitools.model.SimpleEventDto;
 import org.openapitools.model.UpdateSimpleEventDto;
@@ -17,4 +18,6 @@ public abstract class EventSimpleMapper implements UpdatableMapper<SimpleEvent,S
     @Mapping(source = "categoryId", target = "eventCategory.id")
     public abstract SimpleEvent toEntity(CreateSimpleEventDto dto);
 
+    @Mapping(source = "categoryId", target = "eventCategory.id")
+    public abstract SimpleEvent toEntityFromTrans(CreateEventTransDto dto);
 }
