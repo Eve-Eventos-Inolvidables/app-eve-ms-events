@@ -28,11 +28,11 @@ public class SimpleEventController extends BaseController<SimpleEvent,SimpleEven
     protected SimpleEventController(EventSimpleService service){
         super(service);
     }
-
-    @PostMapping
-    Response<SimpleEventDto> create(@Valid @RequestBody CreateSimpleEventDto dto ){
-        return ResponseFactory.ok(service.createSimpleEvent(dto));
-    }
+// Para creare eventos lo hacemos con la transacción (mirar EventTransactionController)
+//    @PostMapping
+//    Response<SimpleEventDto> create(@Valid @RequestBody CreateSimpleEventDto dto ){
+//        return ResponseFactory.ok(service.createSimpleEvent(dto));
+//    }
 
     @GetMapping ("/all")
     Response<List<SimpleEventDto>> getAll(){

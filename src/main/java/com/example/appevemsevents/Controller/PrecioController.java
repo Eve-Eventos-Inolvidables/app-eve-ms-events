@@ -19,10 +19,11 @@ public class PrecioController extends BaseController<SectorByBatch, SectorByBatc
     protected PrecioController(PrecioService service){
         super(service);
     }
-    @PostMapping
-    Response<SectorByBatchDto> create(@Valid @RequestBody CreateSectorByBatchDto dto){
-        return ResponseFactory.ok(service.createPrecio(dto));
-    }
+//    Por el momento no tiene sentido crear un nuevo precio, implica manejar stock de entradas en el evento global, etc.
+//    @PostMapping
+//    Response<SectorByBatchDto> create(@Valid @RequestBody CreateSectorByBatchDto dto){
+//        return ResponseFactory.ok(service.createPrecio(dto));
+//    }
     @GetMapping("/all")
     Response<List<SectorByBatchDto>> getAll(){
         return ResponseFactory.ok(service.getAll());
