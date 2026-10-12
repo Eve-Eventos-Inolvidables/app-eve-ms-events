@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.example</groupId>
 			<artifactId>app-eve-common</artifactId>
-			<version>0.3.11</version>
+			<version>0.4.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
