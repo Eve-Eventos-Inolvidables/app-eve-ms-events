@@ -19,9 +19,6 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
     protected PrecioService(IBaseRepository<SectorByBatch> repository,PrecioMapper mapper){
         super(repository,mapper);
     }
-    public SectorByBatchDto createPrecio(CreateSectorByBatchDto dto){
-        return mapper.toDto(repository.save(mapper.toEntity(dto)));
-    }
     @Override
     public List<SectorByBatchDto> getAll(){return repository.findAll().stream().map(mapper::toDto).toList();}
     @Override

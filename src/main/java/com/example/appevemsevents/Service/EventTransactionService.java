@@ -14,6 +14,7 @@ import com.example.appevemsevents.Service.Precio.PrecioMapper;
 import com.example.appevemsevents.Service.Sector.SectorMapper;
 import org.openapitools.model.CreateEventTransDto;
 import org.openapitools.model.SimpleEventDto;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,6 +54,7 @@ public class EventTransactionService {
     }
 
     @Transactional
+    @CachePut(value="sd",key = "'api_event'+ #result.id ",condition = "#result.id != null")
     public SimpleEventDto createCompleteEvent(CreateEventTransDto dto) {
         // 1. Crear y guardar el Evento (Agregado Raíz)
         SimpleEvent eventEntity = eventMapper.toEntityFromTrans(dto);

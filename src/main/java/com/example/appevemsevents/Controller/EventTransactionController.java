@@ -5,6 +5,7 @@ import com.example.appevecommon.Service.Utilities.Responses.Response;
 import com.example.appevecommon.Service.Utilities.Responses.ResponseFactory;
 import com.example.appevemsevents.Service.EventTransactionService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.CreateEventTransDto;
 import org.openapitools.model.ResponseDto;
 import org.openapitools.model.SimpleEventDto;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@Slf4j
 @RestController
 @RequestMapping("/api/event")
 public class EventTransactionController {
@@ -24,6 +25,10 @@ public class EventTransactionController {
 }
     @PostMapping
     public Response<SimpleEventDto> createEvent(@Valid @RequestBody CreateEventTransDto dto){
+        log.info("Se solicitó crear un evento completo de nombre {} para la fecha {} con límite de tickets por persona de {}",
+                dto.getName(),
+                dto.getDate(),
+                dto.getTicketsPerPersonLimit());
         return ResponseFactory.ok(eventTransactionService.createCompleteEvent(dto));
     }
 }

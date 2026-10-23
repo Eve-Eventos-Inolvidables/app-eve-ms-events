@@ -7,12 +7,14 @@ import com.example.appevecommon.Service.Utilities.Responses.ResponseFactory;
 import com.example.appevemsevents.Service.Precio.PrecioFilter;
 import com.example.appevemsevents.Service.Precio.PrecioService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.CreateSectorByBatchDto;
 import org.openapitools.model.SectorByBatchDto;
 import org.openapitools.model.UpdateSectorByBatchDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@Slf4j
 @RestController
 @RequestMapping("/api/precio")
 public class PrecioController extends BaseController<SectorByBatch, SectorByBatchDto, PrecioFilter, PrecioService> {
@@ -26,11 +28,16 @@ public class PrecioController extends BaseController<SectorByBatch, SectorByBatc
 //    }
     @GetMapping("/all")
     Response<List<SectorByBatchDto>> getAll(){
+        log.info("Se solicitó obtener la lista de todos los precios (SectorByBatch)");
         return ResponseFactory.ok(service.getAll());
     }
-    @PatchMapping("/id")
+    @PatchMapping("/{id}")
     Response<SectorByBatchDto> update(@PathVariable Long id, @Valid @RequestBody
     UpdateSectorByBatchDto dto){
+        log.info("Se solicitó actualizar el precio con id {} (nuevo precio: {}, nueva cantidad: {})",
+                id,
+                dto.getPrice(),
+                dto.getQuantity());
         return ResponseFactory.ok("Precio actualizado correctamente",
                 service.update(id,dto));
     }

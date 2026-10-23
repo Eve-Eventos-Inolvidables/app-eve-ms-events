@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.openapitools.model.CreateSimpleEventDto;
 import org.openapitools.model.SimpleEventDto;
 import org.openapitools.model.UpdateSimpleEventDto;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class EventSimpleService extends
         UpdatableService<SimpleEvent, SimpleEventDto, UpdateSimpleEventDto, EventSimpleMapper, EventSimpleFilter> {
     
     // Constructor
-            protected EventSimpleService(IBaseRepository<SimpleEvent> repository, EventSimpleMapper mapper) {
+    protected EventSimpleService(IBaseRepository<SimpleEvent> repository, EventSimpleMapper mapper) {
         super(repository, mapper);
     }
 
@@ -29,13 +30,15 @@ public class EventSimpleService extends
     }
 
     // getAll
-    @Override 
+    @Override
+    @Cacheable(value="events",key="'api_events' + #result.id")
     public List<SimpleEventDto> getAll(){
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
     // para realizar filtros, con paginación y busquedas con el campo de name, id de categoria, fecha de inicio de visible para el evento
     @Override
+    @Cacheable(value="events",key="'api_events' + #result.id")
     public Specification<SimpleEvent> toSpecification(EventSimpleFilter filter) {
         return (root, query, cb) -> {
             if (filter == null) return cb.conjunction();
