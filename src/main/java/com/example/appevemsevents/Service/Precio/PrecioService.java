@@ -19,8 +19,10 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
     protected PrecioService(IBaseRepository<SectorByBatch> repository,PrecioMapper mapper){
         super(repository,mapper);
     }
+
     @Override
     public List<SectorByBatchDto> getAll(){return repository.findAll().stream().map(mapper::toDto).toList();}
+
     @Override
     public Specification<SectorByBatch> toSpecification(PrecioFilter filter) {
         return (root, query, criteriaBuilder) -> {

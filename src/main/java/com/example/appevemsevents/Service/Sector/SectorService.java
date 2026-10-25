@@ -7,7 +7,9 @@ import com.example.appevecommon.Service.UpdatableService;
 import jakarta.persistence.criteria.Predicate;
 import org.openapitools.model.SectorDto;
 import org.openapitools.model.UpdateSectorDto;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import com.example.appevemsevents.Config.RedisCacheConfig;
@@ -29,5 +31,16 @@ public class SectorService extends UpdatableService<Sector, SectorDto, UpdateSec
     @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT_SECTOR,key="'api_sector' + #id")
     public SectorDto getById(Long id){
         return super.getById(id);
+    }
+
+    @Override
+    @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT_SECTOR, key="'api_sector' + #id")
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }
+    @Override
+    @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT_SECTOR, key="'api_sector' + #id")
+    public SectorDto update(Long id, UpdateSectorDto updateDto) {
+        return super.update(id, updateDto);
     }
 }
