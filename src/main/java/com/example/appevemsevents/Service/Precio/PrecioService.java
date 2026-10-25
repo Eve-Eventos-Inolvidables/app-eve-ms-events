@@ -4,10 +4,12 @@ import com.example.appevecommon.Models.Event.Batch.SectorByBatch;
 import com.example.appevecommon.Models.Event.Sector.Sector;
 import com.example.appevecommon.Repository.IBaseRepository;
 import com.example.appevecommon.Service.UpdatableService;
+import com.example.appevemsevents.Config.RedisCacheConfig;
 import jakarta.persistence.criteria.Predicate;
-import org.openapitools.model.CreateSectorByBatchDto;
-import org.openapitools.model.SectorByBatchDto;
-import org.openapitools.model.UpdateSectorByBatchDto;
+import org.openapitools.model.*;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,22 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
 
             return criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
         };
+    }
+
+    @Override
+    @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT_PRECIO,key="'api_precio' + #id")
+    public SectorByBatchDto getById(Long id){
+        return super.getById(id);
+    }
+
+    @Override
+    @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio' + #id")
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }
+    @Override
+    @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio' + #id")
+    public SectorByBatchDto update(Long id, UpdateSectorByBatchDto updateDto) {
+        return super.update(id, updateDto);
     }
 }

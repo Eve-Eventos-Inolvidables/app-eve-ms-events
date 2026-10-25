@@ -2,9 +2,10 @@ package com.example.appevemsevents.Service.EventSimple;
 
 import java.util.ArrayList;
 
-import org.openapitools.model.CreateSimpleEventDto;
-import org.openapitools.model.SimpleEventDto;
-import org.openapitools.model.UpdateSimpleEventDto;
+import com.example.appevemsevents.Config.RedisCacheConfig;
+import org.openapitools.model.*;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,6 @@ public class EventSimpleService extends
         return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
-    // para realizar filtros, con paginación y busquedas con el campo de name, id de categoria, fecha de inicio de visible para el evento
     @Override
     @Cacheable(value="events",key="'api_events' + #result.id")
     public Specification<SimpleEvent> toSpecification(EventSimpleFilter filter) {
@@ -65,5 +65,22 @@ public class EventSimpleService extends
             
             return cb.and(predicates.toArray(new Predicate[0]));
         };
+    }
+
+    @Override
+    @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT,key="'api_event' + #id")
+    public SimpleEventDto getById(Long id){
+        return super.getById(id);
+    }
+
+    @Override
+    @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT, key="'api_event' + #id")
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }
+    @Override
+    @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT, key="'api_event' + #id")
+    public SimpleEventDto update(Long id, UpdateSimpleEventDto updateDto) {
+        return super.update(id, updateDto);
     }
 }
