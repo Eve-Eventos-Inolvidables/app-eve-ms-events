@@ -26,11 +26,11 @@ public class PrecioController extends BaseController<SectorByBatch, SectorByBatc
 //    Response<SectorByBatchDto> create(@Valid @RequestBody CreateSectorByBatchDto dto){
 //        return ResponseFactory.ok(service.createPrecio(dto));
 //    }
-    @GetMapping("/all")
-    Response<List<SectorByBatchDto>> getAll(){
-        log.info("Se solicitó obtener la lista de todos los precios (SectorByBatch)");
-        return ResponseFactory.ok(service.getAll());
-    }
+//    @GetMapping("/all")
+//    Response<List<SectorByBatchDto>> getAll(){
+//        log.info("Se solicitó obtener la lista de todos los precios (SectorByBatch)");
+//        return ResponseFactory.ok(service.getAll());
+//    }
     @PatchMapping("/{id}")
     Response<SectorByBatchDto> update(@PathVariable Long id, @Valid @RequestBody
     UpdateSectorByBatchDto dto){

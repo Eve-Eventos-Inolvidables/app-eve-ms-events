@@ -1,12 +1,15 @@
 package com.example.appevemsevents.Service.Precio;
 
 import com.example.appevecommon.Models.Event.Batch.SectorByBatch;
-import com.example.appevecommon.Models.Event.Sector.Sector;
 import com.example.appevecommon.Repository.IBaseRepository;
 import com.example.appevecommon.Service.UpdatableService;
+import com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult;
 import com.example.appevemsevents.Config.RedisCacheConfig;
 import jakarta.persistence.criteria.Predicate;
+import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.*;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -16,19 +19,21 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
-public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatchDto, UpdateSectorByBatchDto,PrecioMapper,PrecioFilter> {
-    protected PrecioService(IBaseRepository<SectorByBatch> repository,PrecioMapper mapper){
-        super(repository,mapper);
-    }
+public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatchDto, UpdateSectorByBatchDto, PrecioMapper, PrecioFilter> {
 
-    @Override
-    public List<SectorByBatchDto> getAll(){return repository.findAll().stream().map(mapper::toDto).toList();}
+    private final CacheManager cacheManager;
+
+    protected PrecioService(IBaseRepository<SectorByBatch> repository, PrecioMapper mapper, CacheManager cacheManager){
+        super(repository,mapper);
+        this.cacheManager = cacheManager;
+    }
 
     @Override
     public Specification<SectorByBatch> toSpecification(PrecioFilter filter) {
         return (root, query, criteriaBuilder) -> {
-            if(filter == null) return criteriaBuilder.conjunction(); // Retorna 1=1 (true) si no hay filtro
+            if(filter == null) return criteriaBuilder.conjunction();
             List<Predicate> predicateList = new ArrayList<>();
             if(filter.getPrice() != null) {
                 predicateList.add(
@@ -41,19 +46,38 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
     }
 
     @Override
-    @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT_PRECIO,key="'api_precio' + #id")
+    public PageResult<SectorByBatchDto> getByFilter(PrecioFilter filter) {
+        PageResult<SectorByBatchDto> pageResult = super.getByFilter(filter);
+        Cache cache = cacheManager.getCache(RedisCacheConfig.CACHE_SD_EVENT_PRECIO);
+
+        if (cache != null && pageResult.items() != null) {
+            for (SectorByBatchDto dto : pageResult.items()) {
+                String key = "api_precio_" + dto.getId();
+                cache.put(key, dto);
+                log.info("Elemento cacheado individualmente tras búsqueda masiva: {}", key);
+            }
+        }
+        return pageResult;
+    }
+
+    @Override
+    @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio_' + #id")
     public SectorByBatchDto getById(Long id){
+        log.info("Cache Miss: No se encontró api_precio_{} en Redis. Consultando DB y guardando en caché.", id);
         return super.getById(id);
     }
 
     @Override
-    @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio' + #id")
+    @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio_' + #id")
     public boolean delete(Long id) {
+        log.info("Invalidando caché y eliminando de DB el registro api_precio_{}.", id);
         return super.delete(id);
     }
+
     @Override
-    @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio' + #id")
+    @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio_' + #id")
     public SectorByBatchDto update(Long id, UpdateSectorByBatchDto updateDto) {
+        log.info("Actualizando DB y sobrescribiendo caché para api_precio_{}.", id);
         return super.update(id, updateDto);
     }
 }

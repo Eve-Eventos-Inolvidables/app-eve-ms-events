@@ -34,12 +34,12 @@ public class SimpleEventController extends BaseController<SimpleEvent,SimpleEven
 //    Response<SimpleEventDto> create(@Valid @RequestBody CreateSimpleEventDto dto ){
 //        return ResponseFactory.ok(service.createSimpleEvent(dto));
 //    }
-
-    @GetMapping ("/all")
-    Response<List<SimpleEventDto>> getAll(){
-        log.info("Se solicitó obtener la lista de todos los eventos simples");
-        return ResponseFactory.ok(service.getAll());
-    }
+//
+//    @GetMapping ("/all")
+//    Response<List<SimpleEventDto>> getAll(){
+//        log.info("Se solicitó obtener la lista de todos los eventos simples");
+//        return ResponseFactory.ok(service.getAll());
+//    }
     @PatchMapping ("/{id}")
     Response<SimpleEventDto> update(@PathVariable Long id, @Valid @RequestBody UpdateSimpleEventDto dto){
         log.info("Se solicitó actualizar el evento simple con id {} (intentando actualizar nombre a: {})",
