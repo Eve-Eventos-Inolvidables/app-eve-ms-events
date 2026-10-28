@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.CreateSimpleEventDto;
 import org.openapitools.model.SimpleEventDto;
 import org.openapitools.model.UpdateSimpleEventDto;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,26 +23,19 @@ import com.example.appevecommon.Service.Utilities.Responses.ResponseFactory;
 import jakarta.validation.Valid;
 
 import java.util.List;
+
 @Slf4j
-@RestController 
+@RestController
 @RequestMapping ("/api/sevent")
 public class SimpleEventController extends BaseController<SimpleEvent,SimpleEventDto,EventSimpleFilter,EventSimpleService> {
+
     protected SimpleEventController(EventSimpleService service){
         super(service);
     }
-// Para creare eventos lo hacemos con la transacción (mirar EventTransactionController)
-//    @PostMapping
-//    Response<SimpleEventDto> create(@Valid @RequestBody CreateSimpleEventDto dto ){
-//        return ResponseFactory.ok(service.createSimpleEvent(dto));
-//    }
-//
-//    @GetMapping ("/all")
-//    Response<List<SimpleEventDto>> getAll(){
-//        log.info("Se solicitó obtener la lista de todos los eventos simples");
-//        return ResponseFactory.ok(service.getAll());
-//    }
+
     @PatchMapping ("/{id}")
-    Response<SimpleEventDto> update(@PathVariable Long id, @Valid @RequestBody UpdateSimpleEventDto dto){
+    @PreAuthorize("hasAnyAuthority('Administrador', 'Manager')") // Modificar eventos
+    public Response<SimpleEventDto> update(@PathVariable Long id, @Valid @RequestBody UpdateSimpleEventDto dto){
         log.info("Se solicitó actualizar el evento simple con id {} (intentando actualizar nombre a: {})",
                 id,
                 dto.getName());

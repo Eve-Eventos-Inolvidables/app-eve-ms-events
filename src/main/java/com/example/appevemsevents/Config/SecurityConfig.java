@@ -55,7 +55,7 @@ public class SecurityConfig {
 
         // Lee el nombre del campo de roles desde tu application.yml (por defecto usa "role")
         authoritiesConverter.setAuthoritiesClaimName(rolesClaim);
-        authoritiesConverter.setAuthorityPrefix("ROLE_");
+        authoritiesConverter.setAuthorityPrefix("");
 
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
         converter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);

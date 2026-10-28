@@ -14,6 +14,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Cliente', 'Administrador', 'Manager')") // Todos pueden acceder a la información
     public PageResult<SectorByBatchDto> getByFilter(PrecioFilter filter) {
         PageResult<SectorByBatchDto> pageResult = super.getByFilter(filter);
         Cache cache = cacheManager.getCache(RedisCacheConfig.CACHE_SD_EVENT_PRECIO);
@@ -61,6 +63,7 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Cliente', 'Administrador', 'Manager')") // Todos pueden leer
     @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio_' + #id")
     public SectorByBatchDto getById(Long id){
         log.info("Cache Miss: No se encontró api_precio_{} en Redis. Consultando DB y guardando en caché.", id);
@@ -68,6 +71,7 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
     }
 
     @Override
+    @PreAuthorize("hasAuthority('Administrador')") // Solo el Administrador puede borrar
     @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio_' + #id")
     public boolean delete(Long id) {
         log.info("Invalidando caché y eliminando de DB el registro api_precio_{}.", id);
@@ -75,6 +79,7 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Administrador', 'Manager')") // Administradores y Managers pueden editar
     @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT_PRECIO, key="'api_precio_' + #id")
     public SectorByBatchDto update(Long id, UpdateSectorByBatchDto updateDto) {
         log.info("Actualizando DB y sobrescribiendo caché para api_precio_{}.", id);

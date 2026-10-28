@@ -7,8 +7,8 @@ import com.example.appevemsevents.Service.EventTransactionService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.CreateEventTransDto;
-import org.openapitools.model.ResponseDto;
 import org.openapitools.model.SimpleEventDto;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +22,10 @@ public class EventTransactionController {
 
     public EventTransactionController(EventTransactionService eventTransactionService) {
         this.eventTransactionService = eventTransactionService;
-}
+    }
+
     @PostMapping
+    @PreAuthorize("hasAuthority('Administrador')")// Solo el Administrador puede crear eventos nuevos
     public Response<SimpleEventDto> createEvent(@Valid @RequestBody CreateEventTransDto dto){
         log.info("Se solicitó crear un evento completo de nombre {} para la fecha {} con límite de tickets por persona de {}",
                 dto.getName(),

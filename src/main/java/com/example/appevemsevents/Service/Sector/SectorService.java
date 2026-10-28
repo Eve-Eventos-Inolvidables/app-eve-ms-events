@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class SectorService extends UpdatableService<Sector, SectorDto, UpdateSec
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Cliente', 'Administrador', 'Manager')") // Todos pueden acceder a la información
     public PageResult<SectorDto> getByFilter(SectorFilter filter) {
         PageResult<SectorDto> pageResult = super.getByFilter(filter);
         Cache cache = cacheManager.getCache(RedisCacheConfig.CACHE_SD_EVENT_SECTOR);
@@ -56,6 +58,7 @@ public class SectorService extends UpdatableService<Sector, SectorDto, UpdateSec
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Cliente', 'Administrador', 'Manager')") // Todos pueden leer
     @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT_SECTOR, key="'api_sector_' + #id")
     public SectorDto getById(Long id){
         log.info("Cache Miss: No se encontró api_sector_{} en Redis. Consultando DB y guardando en caché.", id);
@@ -63,6 +66,7 @@ public class SectorService extends UpdatableService<Sector, SectorDto, UpdateSec
     }
 
     @Override
+    @PreAuthorize("hasAuthority('Administrador')") // Solo el Administrador puede borrar
     @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT_SECTOR, key="'api_sector_' + #id")
     public boolean delete(Long id) {
         log.info("Invalidando caché y eliminando de DB el registro api_sector_{}.", id);
@@ -70,6 +74,7 @@ public class SectorService extends UpdatableService<Sector, SectorDto, UpdateSec
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Administrador', 'Manager')") // Administradores y Managers pueden editar
     @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT_SECTOR, key="'api_sector_' + #id")
     public SectorDto update(Long id, UpdateSectorDto updateDto) {
         log.info("Actualizando DB y sobrescribiendo caché para api_sector_{}.", id);

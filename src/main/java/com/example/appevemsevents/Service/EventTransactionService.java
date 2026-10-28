@@ -4,6 +4,7 @@ import com.example.appevecommon.Models.Event.Batch.Batch;
 import com.example.appevecommon.Models.Event.Batch.SectorByBatch;
 import com.example.appevecommon.Models.Event.Sector.Sector;
 import com.example.appevecommon.Models.Event.SimpleEvent;
+import com.example.appevemsevents.Config.RedisCacheConfig;
 import com.example.appevemsevents.Repository.IBatchRepository;
 import com.example.appevemsevents.Repository.IEventRepository;
 import com.example.appevemsevents.Repository.IPrecioRepository;
@@ -12,6 +13,7 @@ import com.example.appevemsevents.Service.Batch.BatchMapper;
 import com.example.appevemsevents.Service.EventSimple.EventSimpleMapper;
 import com.example.appevemsevents.Service.Precio.PrecioMapper;
 import com.example.appevemsevents.Service.Sector.SectorMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.CreateEventTransDto;
 import org.openapitools.model.SimpleEventDto;
 import org.springframework.cache.annotation.CachePut;
@@ -21,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class EventTransactionService {
     private final IBatchRepository batchRepository;
@@ -54,11 +57,15 @@ public class EventTransactionService {
     }
 
     @Transactional
-    @CachePut(value="sd",key = "'api_event'+ #result.id ",condition = "#result.id != null")
+    // Estandarizado al nombre de caché y formato de key del resto del sistema
+    @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT, key = "'api_event_' + #result.id", condition = "#result.id != null")
     public SimpleEventDto createCompleteEvent(CreateEventTransDto dto) {
+        log.info("Iniciando transacción para crear el evento complejo: {}", dto.getName());
+
         // 1. Crear y guardar el Evento (Agregado Raíz)
         SimpleEvent eventEntity = eventMapper.toEntityFromTrans(dto);
         SimpleEvent savedEvent = eventRepository.save(eventEntity);
+        log.info("Evento principal creado en BD con ID: {}", savedEvent.getId());
 
         // 2. Crear y guardar los Sectores
         List<Sector> savedSectors = new ArrayList<>();
@@ -68,6 +75,7 @@ public class EventTransactionService {
                 sector.setEvent(savedEvent); // Vinculamos con el ID real del evento
                 savedSectors.add(sectorRepository.save(sector));
             });
+            log.info("Se guardaron {} sectores para el evento ID: {}", savedSectors.size(), savedEvent.getId());
         }
 
         // 3. Crear y guardar las Tandas (Batches)
@@ -78,6 +86,7 @@ public class EventTransactionService {
                 batch.setEvent(savedEvent); // Vinculamos con el ID real del evento
                 savedBatches.add(batchRepository.save(batch));
             });
+            log.info("Se guardaron {} tandas para el evento ID: {}", savedBatches.size(), savedEvent.getId());
         }
 
         // 4. Crear y guardar los Precios (SectorByBatch)
@@ -85,28 +94,21 @@ public class EventTransactionService {
             dto.getPrecios().forEach(precioDto -> {
                 SectorByBatch price = precioMapper.toEntity(precioDto);
 
-                /*
-                 * Como el frontend aún no tiene los IDs reales de la base de datos,
-                 * utiliza los campos sectorId y batchId del DTO como ÍNDICES de los arrays.
-                 * Convertimos el Long que trae el DTO a int para buscar en las listas en memoria.
-                 */
                 int sectorIndex = precioDto.getSectorId().intValue();
                 int batchIndex = precioDto.getBatchId().intValue();
 
-                // Recuperamos las entidades ya guardadas (que ahora sí tienen IDs reales)
                 Sector assignedSector = savedSectors.get(sectorIndex);
                 Batch assignedBatch = savedBatches.get(batchIndex);
 
-                // Asignamos las relaciones fuertes
                 price.setSector(assignedSector);
                 price.setBatch(assignedBatch);
 
                 precioRepository.save(price);
             });
+            log.info("Se generaron y vincularon {} combinaciones de precios (Sector x Tanda)", dto.getPrecios().size());
         }
+
+        log.info("Transacción completada exitosamente. Evento {} (ID: {}) guardado en caché.", savedEvent.getName(), savedEvent.getId());
         return eventMapper.toDto(savedEvent);
     }
-    }
-
-
-
+}

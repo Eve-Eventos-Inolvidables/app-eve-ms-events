@@ -10,16 +10,23 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.BatchDto;
 import org.openapitools.model.UpdateBatchDto;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
 @RequestMapping("api/batch")
 public class BatchController extends BaseController<Batch, BatchDto, BatchFilter, BatchService> {
-    protected BatchController(BatchService service){super(service);}
+
+    protected BatchController(BatchService service){
+        super(service);
+    }
+
     @PatchMapping("/{id}")
-    Response<BatchDto> update(@PathVariable Long id, @Valid @RequestBody UpdateBatchDto dto){
-        log.info("Se solicitó actualizar el sector con id {} (nuevos valores (no todos fueron necesariamente modificados),startDate:{},endDate:{},eventId:{},Nombre:{})",id,dto.getStartDate(),dto.getEndDate(),dto.getEventId(),dto.getName());
-        return ResponseFactory.ok("Sector actualizado correctamente",service.update(id,dto));
+    @PreAuthorize("hasAnyAuthority('Administrador', 'Manager')") // Modificar tandas
+    public Response<BatchDto> update(@PathVariable Long id, @Valid @RequestBody UpdateBatchDto dto){
+        log.info("Se solicitó actualizar la tanda con id {} (nuevos valores: startDate:{}, endDate:{}, eventId:{}, Nombre:{})",
+                id, dto.getStartDate(), dto.getEndDate(), dto.getEventId(), dto.getName());
+        return ResponseFactory.ok("Tanda actualizada correctamente", service.update(id, dto));
     }
 }

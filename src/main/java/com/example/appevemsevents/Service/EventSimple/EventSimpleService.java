@@ -10,6 +10,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,26 +32,21 @@ public class EventSimpleService extends
         super(repository, mapper);
         this.cacheManager = cacheManager;
     }
+
     @Override
     public Specification<SimpleEvent> toSpecification(EventSimpleFilter filter) {
         return (root, query, cb) -> {
             if (filter == null) return cb.conjunction();
-
             List<Predicate> predicates = new ArrayList<>();
 
-            // 1. Filtro por nombre
             if (filter.getName() != null && !filter.getName().isBlank()) {
                 predicates.add(
                         cb.like(cb.lower(root.get("name")), "%" + filter.getName().toLowerCase() + "%")
                 );
             }
-
-            // 2. Filtro por ID de categoría
             if (filter.getCategoryId() != null) {
                 predicates.add(cb.equal(root.get("eventCategory").get("id"), filter.getCategoryId()));
             }
-
-            // 3. Filtro por fecha de inicio visible
             if (filter.getVisibleStart() != null) {
                 predicates.add(cb.greaterThanOrEqualTo(root.get("visibleStart"), filter.getVisibleStart()));
             }
@@ -60,6 +56,7 @@ public class EventSimpleService extends
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Cliente', 'Administrador', 'Manager')") // Todos pueden acceder a la información
     public PageResult<SimpleEventDto> getByFilter(EventSimpleFilter filter) {
         PageResult<SimpleEventDto> pageResult = super.getByFilter(filter);
         Cache cache = cacheManager.getCache(RedisCacheConfig.CACHE_SD_EVENT);
@@ -75,6 +72,7 @@ public class EventSimpleService extends
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Cliente', 'Administrador', 'Manager')") // Todos pueden leer
     @Cacheable(value= RedisCacheConfig.CACHE_SD_EVENT, key="'api_event_' + #id")
     public SimpleEventDto getById(Long id){
         log.info("Cache Miss: No se encontró api_event_{} en Redis. Consultando DB y guardando en caché.", id);
@@ -82,6 +80,7 @@ public class EventSimpleService extends
     }
 
     @Override
+    @PreAuthorize("hasAuthority('Administrador')") // Solo el Administrador puede borrar
     @CacheEvict(value = RedisCacheConfig.CACHE_SD_EVENT, key="'api_event_' + #id")
     public boolean delete(Long id) {
         log.info("Invalidando caché y eliminando de DB el registro api_event_{}.", id);
@@ -89,6 +88,7 @@ public class EventSimpleService extends
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('Administrador', 'Manager')") // Administradores y Managers pueden editar
     @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT, key="'api_event_' + #id")
     public SimpleEventDto update(Long id, UpdateSimpleEventDto updateDto) {
         log.info("Actualizando DB y sobrescribiendo caché para api_event_{}.", id);

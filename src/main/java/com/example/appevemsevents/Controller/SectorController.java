@@ -10,18 +10,23 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.SectorDto;
 import org.openapitools.model.UpdateSectorDto;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
 @RequestMapping("api/sector")
 public class SectorController extends BaseController<Sector, SectorDto, SectorFilter, SectorService> {
+
     protected SectorController(SectorService service){
         super(service);
     }
+
     @PatchMapping("/{id}")
-    Response<SectorDto> update(@PathVariable Long id, @Valid @RequestBody UpdateSectorDto dto){
-log.info("Se solicitó actualizar el sector con id {} (nuevos valores (no todos fueron necesariamente modificados),capacidad:{},eventoID:{},Nombre:{})",id,dto.getCapacity(),dto.getEventId(),dto.getName());
-return ResponseFactory.ok("Sector actualizado correctamente",service.update(id,dto));
+    @PreAuthorize("hasAnyAuthority('Administrador', 'Manager')") // Modificar sectores
+    public Response<SectorDto> update(@PathVariable Long id, @Valid @RequestBody UpdateSectorDto dto){
+        log.info("Se solicitó actualizar el sector con id {} (nuevos valores: capacidad:{}, eventoID:{}, Nombre:{})",
+                id, dto.getCapacity(), dto.getEventId(), dto.getName());
+        return ResponseFactory.ok("Sector actualizado correctamente", service.update(id, dto));
     }
 }
