@@ -1104,3 +1104,1250 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 2026-10-29 15:17:53 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
 2026-10-29 15:17:53 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
 2026-10-29 15:17:53 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:21:17 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application APP-EVE-MS-EVENTS with eureka with status DOWN
+2026-10-29 15:21:17 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793298077550, current=DOWN, previous=UP]
+2026-10-29 15:21:17 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-10-29 15:21:17 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-29 15:21:17 [tomcat-shutdown] INFO  [app-eve-ms-events] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-10-29 15:21:17 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} exception=I/O error on POST request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS": localhost:8761 failed to respond
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS": localhost:8761 failed to respond
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toBodilessEntity(DefaultRestClient.java:888)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.register(RestClientEurekaHttpClient.java:64)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:90)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:843)
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125)
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:309)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.core5.http.NoHttpResponseException: localhost:8761 failed to respond
+	at org.apache.hc.core5.http.impl.io.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:333)
+	at org.apache.hc.core5.http.impl.io.HttpRequestExecutor.execute(HttpRequestExecutor.java:197)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.lambda$execute$0(InternalExecRuntime.java:236)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager$InternalConnectionEndpoint.execute(PoolingHttpClientConnectionManager.java:851)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.execute(InternalExecRuntime.java:233)
+	at org.apache.hc.client5.http.impl.classic.MainClientExec.execute(MainClientExec.java:120)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 23 common frames omitted
+2026-10-29 15:21:17 [DiscoveryClient-InstanceInfoReplicator-%d] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS": localhost:8761 failed to respond
+2026-10-29 15:21:17 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on POST request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toBodilessEntity(DefaultRestClient.java:888)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.register(RestClientEurekaHttpClient.java:64)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:843)
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125)
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:309)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:219)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:547)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 24 common frames omitted
+2026-10-29 15:21:17 [DiscoveryClient-InstanceInfoReplicator-%d] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+2026-10-29 15:21:17 [DiscoveryClient-InstanceInfoReplicator-%d] WARN  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration failed Cannot execute request on any known server
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:843)
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125)
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:309)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:21:17 [DiscoveryClient-InstanceInfoReplicator-%d] WARN  [app-eve-ms-events] c.n.discovery.InstanceInfoReplicator - There was a problem with the instance info replicator
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:843)
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125)
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:309)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:21:17 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-29 15:21:17 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-10-29 15:21:18 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-10-29 15:21:18 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2026-10-29 15:21:21 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Unregistering ...
+2026-10-29 15:21:21 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on DELETE request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toBodilessEntity(DefaultRestClient.java:888)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.cancel(RestClientEurekaHttpClient.java:73)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:934)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:915)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:411)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:237)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:200)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:193)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:387)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:134)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:209)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:795)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1507)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:704)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1500)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1246)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1207)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:176)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1153)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:219)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:547)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 40 common frames omitted
+2026-10-29 15:21:21 [SpringApplicationShutdownHook] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+2026-10-29 15:21:21 [SpringApplicationShutdownHook] ERROR [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - de-registration failedCannot execute request on any known server
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:934)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:915)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:411)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:237)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:200)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:193)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:387)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:134)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:209)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:795)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1507)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:704)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1500)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1246)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1207)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:176)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1153)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:21:21 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2026-10-29 15:21:36 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Starting AppEveMsEventsApplication using Java 25.0.4.1 with PID 66114 (/home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events/target/classes started by mrfabian in /home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events)
+2026-10-29 15:21:36 [main] DEBUG [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-29 15:21:36 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 106 ms. Found 4 JPA repository interfaces.
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IBatchRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IEventRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IPrecioRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.ISectorRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:21:37 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2026-10-29 15:21:38 [main] INFO  [app-eve-ms-events] o.s.cloud.context.scope.GenericScope - BeanFactory id=b0c8f056-72fa-325d-b067-0159f956af8f
+2026-10-29 15:21:38 [main] INFO  [app-eve-ms-events] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-10-29 15:21:38 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-10-29 15:21:38 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-29 15:21:38 [main] INFO  [app-eve-ms-events] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2033 ms
+2026-10-29 15:21:38 [main] INFO  [app-eve-ms-events] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-29 15:21:38 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-29 15:21:39 [main] INFO  [app-eve-ms-events] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-29 15:21:39 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-10-29 15:21:40 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@411933
+2026-10-29 15:21:40 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-10-29 15:21:41 [main] INFO  [app-eve-ms-events] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://aws-0-us-east-1.pooler.supabase.com:6543/postgres?prepareThreshold=0]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.6
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-29 15:21:43 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-29 15:21:43 [main] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-29 15:21:43 [main] INFO  [app-eve-ms-events] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-29 15:21:44 [main] TRACE [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.example.appevemsevents.Config.SecurityConfig$$SpringCGLIB$$0@2801ccb3}
+2026-10-29 15:21:44 [main] DEBUG [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2026-10-29 15:21:44 [main] DEBUG [app-eve-ms-events] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, OAuth2ProtectedResourceMetadataFilter, BearerTokenAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestClient.
+2026-10-29 15:21:45 [main] WARN  [app-eve-ms-events] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application is null : false
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - The response status is 200
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1793298105602 with initial instances count: 0
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Registering application APP-EVE-MS-EVENTS with eureka with status UP
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793298105610, current=UP, previous=STARTING]
+2026-10-29 15:21:45 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8081
+2026-10-29 15:21:45 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Started AppEveMsEventsApplication in 9.693 seconds (process running for 10.357)
+2026-10-29 15:21:45 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-10-29 15:22:09 [http-nio-8081-exec-1] INFO  [app-eve-ms-events] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-29 15:22:09 [http-nio-8081-exec-1] INFO  [app-eve-ms-events] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-10-29 15:22:09 [http-nio-8081-exec-1] INFO  [app-eve-ms-events] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (7/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (8/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (9/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (10/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (11/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (12/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (13/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (14/14)
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /v3/api-docs
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /v3/api-docs using org.springframework.security.authorization.SingleResultAuthorizationManager@60d014b6
+2026-10-29 15:22:09 [http-nio-8081-exec-1] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-10-29 15:22:09 [http-nio-8081-exec-1] INFO  [app-eve-ms-events] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 357 ms
+2026-10-29 15:22:09 [http-nio-8081-exec-1] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application is null : false
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application version is -1: false
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2026-10-29 15:22:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - The response status is 200
+2026-10-29 15:22:17 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:22:17 [http-nio-8081-exec-2] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing POST /api/event
+2026-10-29 15:22:17 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:22:17 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:22:17 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:22:17 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:22:17 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:22:17 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:22:18 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:22:18 [http-nio-8081-exec-3] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing POST /api/event
+2026-10-29 15:22:18 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:22:18 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:22:18 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:22:18 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:22:18 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:22:18 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:23:15 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:23:15 [http-nio-8081-exec-4] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing POST /api/event
+2026-10-29 15:23:15 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:23:15 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:23:15 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:23:15 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:23:15 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:23:15 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:26:10 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:26:10 [http-nio-8081-exec-6] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing POST /api/event
+2026-10-29 15:26:10 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:26:10 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:26:10 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:26:10 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:26:10 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:26:10 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:26:45 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (7/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (8/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (9/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (10/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (11/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (12/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (13/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (14/14)
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /v3/api-docs
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /v3/api-docs using org.springframework.security.authorization.SingleResultAuthorizationManager@60d014b6
+2026-10-29 15:29:24 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-10-29 15:29:24 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /api/sevent
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (7/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (8/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (9/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (10/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (11/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (12/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (13/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (14/14)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /api/sevent
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /api/sevent using org.springframework.security.authorization.AuthenticatedAuthorizationManager@4dde6f34
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:132)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:86)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:174)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.oauth2.server.resource.web.OAuth2ProtectedResourceMetadataFilter.doFilterInternal(OAuth2ProtectedResourceMetadataFilter.java:98)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:406)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2036)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:29:33 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /api/sevent
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (7/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (8/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (9/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (10/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (11/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (12/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (13/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (14/14)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /api/sevent
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /api/sevent using org.springframework.security.authorization.AuthenticatedAuthorizationManager@4dde6f34
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:132)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:86)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:174)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.oauth2.server.resource.web.OAuth2ProtectedResourceMetadataFilter.doFilterInternal(OAuth2ProtectedResourceMetadataFilter.java:98)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:406)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2036)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:30:36 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (7/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (8/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (9/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (10/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (11/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (12/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (13/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (14/14)
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /v3/api-docs
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /v3/api-docs using org.springframework.security.authorization.SingleResultAuthorizationManager@60d014b6
+2026-10-29 15:31:22 [http-nio-8081-exec-3] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-10-29 15:31:22 [http-nio-8081-exec-3] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:31:28 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:31:28 [http-nio-8081-exec-4] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing OPTIONS /api/sevent
+2026-10-29 15:31:28 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /api/sevent
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (7/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (8/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.authentication.ProviderManager - Authenticating request with JwtAuthenticationProvider (1/2)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.o.s.r.a.JwtGrantedAuthoritiesConverter - Looking for scopes in claim roles
+2026-10-29 15:31:28 [http-nio-8081-exec-5] DEBUG [app-eve-ms-events] o.s.s.o.s.r.a.JwtAuthenticationProvider - Authenticated token
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-10-29 15:31:28 [http-nio-8081-exec-5] DEBUG [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter$JwtAuthenticatedPrincipal@3f5c2ceb, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[Administrador, FactorGrantedAuthority [authority=FACTOR_BEARER, issuedAt=2026-10-29T18:31:28.316639781Z]]]
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (9/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (10/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (11/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (12/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Did not set SecurityContextHolder since already authenticated JwtAuthenticationToken [Principal=org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter$JwtAuthenticatedPrincipal@3f5c2ceb, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[Administrador, FactorGrantedAuthority [authority=FACTOR_BEARER, issuedAt=2026-10-29T18:31:28.316639781Z]]]
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.w.a.s.CompositeSessionAuthenticationStrategy - Preparing session with ChangeSessionIdAuthenticationStrategy (1/1)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (13/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (14/14)
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /api/sevent
+2026-10-29 15:31:28 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /api/sevent using org.springframework.security.authorization.AuthenticatedAuthorizationManager@4dde6f34
+2026-10-29 15:31:28 [http-nio-8081-exec-5] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /api/sevent
+2026-10-29 15:31:28 [http-nio-8081-exec-5] DEBUG [app-eve-ms-events] o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult com.example.appevemsevents.Service.EventSimple.EventSimpleService.getByFilter(com.example.appevemsevents.Service.EventSimple.EventSimpleFilter); target is of class [com.example.appevemsevents.Service.EventSimple.EventSimpleService]
+2026-10-29 15:31:28 [http-nio-8081-exec-5] DEBUG [app-eve-ms-events] o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult com.example.appevemsevents.Service.EventSimple.EventSimpleService.getByFilter(com.example.appevemsevents.Service.EventSimple.EventSimpleFilter); target is of class [com.example.appevemsevents.Service.EventSimple.EventSimpleService]
+2026-10-29 15:31:29 [http-nio-8081-exec-5] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_13
+2026-10-29 15:31:29 [http-nio-8081-exec-5] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_22
+2026-10-29 15:31:29 [http-nio-8081-exec-5] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_15
+2026-10-29 15:31:29 [http-nio-8081-exec-5] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_21
+2026-10-29 15:31:29 [http-nio-8081-exec-5] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:31:45 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /api/sevent
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (7/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (8/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.authentication.ProviderManager - Authenticating request with JwtAuthenticationProvider (1/2)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.o.s.r.a.JwtGrantedAuthoritiesConverter - Looking for scopes in claim roles
+2026-10-29 15:32:38 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.s.o.s.r.a.JwtAuthenticationProvider - Authenticated token
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-10-29 15:32:38 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter$JwtAuthenticatedPrincipal@3f5c2ceb, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[FactorGrantedAuthority [authority=FACTOR_BEARER, issuedAt=2026-10-29T18:32:38.673895504Z], Administrador]]
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (9/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (10/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (11/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (12/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Did not set SecurityContextHolder since already authenticated JwtAuthenticationToken [Principal=org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter$JwtAuthenticatedPrincipal@3f5c2ceb, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[FactorGrantedAuthority [authority=FACTOR_BEARER, issuedAt=2026-10-29T18:32:38.673895504Z], Administrador]]
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.s.CompositeSessionAuthenticationStrategy - Preparing session with ChangeSessionIdAuthenticationStrategy (1/1)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (13/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (14/14)
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /api/sevent
+2026-10-29 15:32:38 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /api/sevent using org.springframework.security.authorization.AuthenticatedAuthorizationManager@4dde6f34
+2026-10-29 15:32:38 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /api/sevent
+2026-10-29 15:32:38 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult com.example.appevemsevents.Service.EventSimple.EventSimpleService.getByFilter(com.example.appevemsevents.Service.EventSimple.EventSimpleFilter); target is of class [com.example.appevemsevents.Service.EventSimple.EventSimpleService]
+2026-10-29 15:32:38 [http-nio-8081-exec-8] DEBUG [app-eve-ms-events] o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult com.example.appevemsevents.Service.EventSimple.EventSimpleService.getByFilter(com.example.appevemsevents.Service.EventSimple.EventSimpleFilter); target is of class [com.example.appevemsevents.Service.EventSimple.EventSimpleService]
+2026-10-29 15:32:39 [http-nio-8081-exec-8] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_13
+2026-10-29 15:32:39 [http-nio-8081-exec-8] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_22
+2026-10-29 15:32:39 [http-nio-8081-exec-8] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_15
+2026-10-29 15:32:39 [http-nio-8081-exec-8] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_21
+2026-10-29 15:32:39 [http-nio-8081-exec-8] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:34:47 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-10-29 15:34:47 [http-nio-8081-exec-10] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing POST /api/event
+2026-10-29 15:34:47 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/14)
+2026-10-29 15:34:47 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/14)
+2026-10-29 15:34:47 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/14)
+2026-10-29 15:34:47 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/14)
+2026-10-29 15:34:47 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/14)
+2026-10-29 15:34:47 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-10-29 15:36:45 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-10-29 15:41:45 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-10-29 15:46:45 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-10-29 15:49:14 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application APP-EVE-MS-EVENTS with eureka with status DOWN
+2026-10-29 15:49:14 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793299754655, current=DOWN, previous=UP]
+2026-10-29 15:49:14 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-10-29 15:49:14 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-29 15:49:14 [tomcat-shutdown] INFO  [app-eve-ms-events] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-10-29 15:49:14 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-10-29 15:49:14 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-29 15:49:14 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-10-29 15:49:15 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-10-29 15:49:15 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2026-10-29 15:49:15 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] o.a.h.c.h.i.c.HttpRequestRetryExec - ex-0000000112 recoverable I/O exception (org.apache.hc.core5.http.NoHttpResponseException) caught when sending request to http://localhost:8761;request will be automatically re-executed in 0 MILLISECONDS (exec count 2)
+2026-10-29 15:49:15 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} exception=I/O error on PUT request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+org.springframework.web.client.ResourceAccessException: I/O error on PUT request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntityInternal(DefaultRestClient.java:870)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntity(DefaultRestClient.java:859)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.sendHeartBeat(RestClientEurekaHttpClient.java:91)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:90)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:860)
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1418)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:219)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:547)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 22 common frames omitted
+2026-10-29 15:49:15 [DiscoveryClient-HeartbeatExecutor-%d] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on PUT request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+2026-10-29 15:49:15 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on PUT request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+org.springframework.web.client.ResourceAccessException: I/O error on PUT request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntityInternal(DefaultRestClient.java:870)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntity(DefaultRestClient.java:859)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.sendHeartBeat(RestClientEurekaHttpClient.java:91)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:860)
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1418)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:219)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:547)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 23 common frames omitted
+2026-10-29 15:49:15 [DiscoveryClient-HeartbeatExecutor-%d] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on PUT request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+2026-10-29 15:49:15 [DiscoveryClient-HeartbeatExecutor-%d] ERROR [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - was unable to send heartbeat!
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:860)
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1418)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:49:15 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} exception=I/O error on GET request for "http://localhost:8761/eureka/apps/delta": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8761/eureka/apps/delta": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntityInternal(DefaultRestClient.java:870)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntity(DefaultRestClient.java:859)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.getApplicationsInternal(RestClientEurekaHttpClient.java:201)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.getDelta(RestClientEurekaHttpClient.java:142)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$7.execute(EurekaHttpClientDecorator.java:152)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:90)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$7.execute(EurekaHttpClientDecorator.java:152)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$7.execute(EurekaHttpClientDecorator.java:152)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.DiscoveryClient.getAndUpdateDelta(DiscoveryClient.java:1095)
+	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:978)
+	at com.netflix.discovery.DiscoveryClient.refreshRegistry(DiscoveryClient.java:1489)
+	at com.netflix.discovery.DiscoveryClient$CacheRefreshThread.run(DiscoveryClient.java:1457)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:219)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:547)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 25 common frames omitted
+2026-10-29 15:49:15 [DiscoveryClient-CacheRefreshExecutor-%d] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on GET request for "http://localhost:8761/eureka/apps/delta": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+2026-10-29 15:49:16 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on GET request for "http://localhost:8761/eureka/apps/delta": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8761/eureka/apps/delta": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntityInternal(DefaultRestClient.java:870)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntity(DefaultRestClient.java:859)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.getApplicationsInternal(RestClientEurekaHttpClient.java:201)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.getDelta(RestClientEurekaHttpClient.java:142)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$7.execute(EurekaHttpClientDecorator.java:152)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$7.execute(EurekaHttpClientDecorator.java:152)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$7.execute(EurekaHttpClientDecorator.java:152)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.DiscoveryClient.getAndUpdateDelta(DiscoveryClient.java:1095)
+	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:978)
+	at com.netflix.discovery.DiscoveryClient.refreshRegistry(DiscoveryClient.java:1489)
+	at com.netflix.discovery.DiscoveryClient$CacheRefreshThread.run(DiscoveryClient.java:1457)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:219)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:547)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 26 common frames omitted
+2026-10-29 15:49:16 [DiscoveryClient-CacheRefreshExecutor-%d] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on GET request for "http://localhost:8761/eureka/apps/delta": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+2026-10-29 15:49:16 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - was unable to refresh its cache! This periodic background refresh will be retried in 30 seconds. status = Cannot execute request on any known server
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$7.execute(EurekaHttpClientDecorator.java:152)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getDelta(EurekaHttpClientDecorator.java:149)
+	at com.netflix.discovery.DiscoveryClient.getAndUpdateDelta(DiscoveryClient.java:1095)
+	at com.netflix.discovery.DiscoveryClient.fetchRegistry(DiscoveryClient.java:978)
+	at com.netflix.discovery.DiscoveryClient.refreshRegistry(DiscoveryClient.java:1489)
+	at com.netflix.discovery.DiscoveryClient$CacheRefreshThread.run(DiscoveryClient.java:1457)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:49:18 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Unregistering ...
+2026-10-29 15:49:18 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on DELETE request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:779)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:624)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:572)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:747)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:924)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toBodilessEntity(DefaultRestClient.java:888)
+	at org.springframework.cloud.netflix.eureka.http.RestClientEurekaHttpClient.cancel(RestClientEurekaHttpClient.java:73)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:934)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:915)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:411)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:237)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:200)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:193)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:387)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:134)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:209)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:795)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1507)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:704)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1500)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1246)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1207)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:176)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1153)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 failed: Connection refused (connect failed)
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284)
+	at java.base/java.net.Socket.connect(Socket.java:659)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:219)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:547)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:138)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:112)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:87)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeWithRequestAndBody(AbstractBufferingClientHttpRequest.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest$EndOfChainRequestExecution.execute(InterceptingClientHttpRequest.java:102)
+	at org.springframework.cloud.netflix.eureka.http.RestClientTransportClientFactory.lambda$newClient$2(RestClientTransportClientFactory.java:98)
+	at org.springframework.http.client.ClientHttpRequestInterceptor.lambda$apply$0(ClientHttpRequestInterceptor.java:89)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:73)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:50)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:80)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:614)
+	... 40 common frames omitted
+2026-10-29 15:49:18 [SpringApplicationShutdownHook] WARN  [app-eve-ms-events] c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081": Connect to http://localhost:8761 failed: Connection refused (connect failed)
+2026-10-29 15:49:18 [SpringApplicationShutdownHook] ERROR [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - de-registration failedCannot execute request on any known server
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:934)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:915)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:411)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:237)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:200)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:193)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:387)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:134)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:209)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:795)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1507)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:704)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1500)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1246)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1207)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:176)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1153)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-10-29 15:49:18 [SpringApplicationShutdownHook] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2026-10-29 15:49:35 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Starting AppEveMsEventsApplication using Java 25.0.4.1 with PID 71733 (/home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events/target/classes started by mrfabian in /home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events)
+2026-10-29 15:49:35 [main] DEBUG [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-10-29 15:49:35 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IBatchRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IEventRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IPrecioRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.ISectorRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2026-10-29 15:49:36 [main] INFO  [app-eve-ms-events] o.s.cloud.context.scope.GenericScope - BeanFactory id=b0c8f056-72fa-325d-b067-0159f956af8f
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2053 ms
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-29 15:49:37 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-10-29 15:49:39 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7d8d671b
+2026-10-29 15:49:39 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-10-29 15:49:40 [main] INFO  [app-eve-ms-events] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://aws-0-us-east-1.pooler.supabase.com:6543/postgres?prepareThreshold=0]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.6
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-29 15:49:41 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-29 15:49:41 [main] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-29 15:49:41 [main] INFO  [app-eve-ms-events] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-29 15:49:42 [main] TRACE [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.example.appevemsevents.Config.SecurityConfig$$SpringCGLIB$$0@75381b61}
+2026-10-29 15:49:42 [main] DEBUG [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2026-10-29 15:49:42 [main] DEBUG [app-eve-ms-events] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, OAuth2ProtectedResourceMetadataFilter, BearerTokenAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestClient.
+2026-10-29 15:49:43 [main] WARN  [app-eve-ms-events] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application is null : false
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2026-10-29 15:49:43 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - The response status is 200
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1793299784072 with initial instances count: 0
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Registering application APP-EVE-MS-EVENTS with eureka with status UP
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793299784080, current=UP, previous=STARTING]
+2026-10-29 15:49:44 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8081
+2026-10-29 15:49:44 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Started AppEveMsEventsApplication in 9.545 seconds (process running for 10.268)
+2026-10-29 15:49:44 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application is null : false
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application version is -1: false
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2026-10-29 15:50:14 [DiscoveryClient-CacheRefreshExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - The response status is 200

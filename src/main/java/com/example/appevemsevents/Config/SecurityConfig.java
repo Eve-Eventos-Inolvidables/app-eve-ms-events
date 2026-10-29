@@ -34,7 +34,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationConverter jwtAuthenticationConverter)
             throws Exception {
         return http
-                .cors(Customizer.withDefaults()) // Habilita CORS para las peticiones desde el Gateway
+
+//                cors ya no necesitado, el gateway se encarga de esto
+//                .cors(Customizer.withDefaults()) // Habilita CORS para las peticiones desde el Gateway
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
