@@ -24,6 +24,7 @@ public class RedisCacheConfig {
     public static final String CACHE_SD_EVENT_SECTOR = "event-sector";
     public static final String CACHE_SD_EVENT_PRECIO = "event-precio";
     public static final String CACHE_SD_EVENT_BATCH = "event-batch";
+    public static final String CACHE_SD_EVENT_CATEGORIA = "event-categoria";
     public static final String CACHE_SD_EVENT= "event";
 
     @Bean
@@ -50,6 +51,7 @@ public class RedisCacheConfig {
         perCache.put(CACHE_SD_EVENT_BATCH, redisCacheConfiguration.entryTtl(Duration.ofSeconds(infoTtlSeconds)));
         perCache.put(CACHE_SD_EVENT_SECTOR, redisCacheConfiguration.entryTtl(Duration.ofSeconds(infoTtlSeconds)));
         perCache.put(CACHE_SD_EVENT_PRECIO, redisCacheConfiguration.entryTtl(Duration.ofSeconds(infoTtlSeconds)));
+        perCache.put(CACHE_SD_EVENT_CATEGORIA, redisCacheConfiguration.entryTtl(Duration.ofSeconds(infoTtlSeconds)));
 
         return RedisCacheManager.builder(redisConnectionFactory)
                 .cacheDefaults(redisCacheConfiguration.entryTtl(Duration.ofMinutes(10)))

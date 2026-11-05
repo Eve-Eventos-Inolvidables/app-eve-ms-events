@@ -5340,3 +5340,330 @@ org.springframework.security.authorization.AuthorizationDeniedException: Access 
 2026-11-04 20:55:00 [http-nio-8081-exec-4] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_26
 2026-11-04 20:55:00 [http-nio-8081-exec-4] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_21
 2026-11-04 20:55:00 [http-nio-8081-exec-4] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-11-04 20:58:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:03:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:08:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:12:01 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Starting AppEveMsEventsApplication using Java 21.0.12.1 with PID 160950 (/home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events/target/classes started by mrfabian in /home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events)
+2026-11-04 21:12:01 [main] DEBUG [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-11-04 21:12:01 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-04 21:12:03 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-11-04 21:12:03 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04 21:12:03 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 461 ms. Found 4 JPA repository interfaces.
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IBatchRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IEventRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IPrecioRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.ISectorRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 0 Redis repository interfaces.
+2026-11-04 21:12:04 [main] INFO  [app-eve-ms-events] o.s.cloud.context.scope.GenericScope - BeanFactory id=96e446f3-235c-302e-93f3-c87a48a531b0
+2026-11-04 21:12:05 [main] INFO  [app-eve-ms-events] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-11-04 21:12:05 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-04 21:12:05 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-04 21:12:05 [main] INFO  [app-eve-ms-events] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4562 ms
+2026-11-04 21:12:06 [main] INFO  [app-eve-ms-events] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-04 21:12:06 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-11-04 21:12:07 [main] INFO  [app-eve-ms-events] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04 21:12:07 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-04 21:12:09 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4bc9451b
+2026-11-04 21:12:09 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-04 21:12:10 [main] INFO  [app-eve-ms-events] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://aws-0-us-east-1.pooler.supabase.com:6543/postgres?prepareThreshold=0]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.6
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04 21:12:12 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04 21:12:13 [main] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04 21:12:13 [main] INFO  [app-eve-ms-events] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-04 21:12:15 [main] TRACE [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.example.appevemsevents.Config.SecurityConfig$$SpringCGLIB$$0@b7952d2}
+2026-11-04 21:12:15 [main] DEBUG [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2026-11-04 21:12:16 [main] DEBUG [app-eve-ms-events] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, OAuth2ProtectedResourceMetadataFilter, BearerTokenAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04 21:12:17 [main] INFO  [app-eve-ms-events] o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestClient.
+2026-11-04 21:12:17 [main] WARN  [app-eve-ms-events] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application is null : false
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2026-11-04 21:12:18 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - The response status is 200
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1793837539413 with initial instances count: 4
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Registering application APP-EVE-MS-EVENTS with eureka with status UP
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793837539427, current=UP, previous=STARTING]
+2026-11-04 21:12:19 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application APP-EVE-MS-EVENTS with eureka with status DOWN
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793837539496, current=DOWN, previous=UP]
+2026-11-04 21:12:19 [main] WARN  [app-eve-ms-events] o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04 21:12:19 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-04 21:12:19 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-11-04 21:12:19 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-11-04 21:12:19 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-11-04 21:12:21 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-11-04 21:12:21 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2026-11-04 21:12:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Unregistering ...
+2026-11-04 21:12:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - deregister  status: 200
+2026-11-04 21:12:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2026-11-04 21:12:24 [main] INFO  [app-eve-ms-events] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-04 21:12:24 [main] ERROR [app-eve-ms-events] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (5/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (6/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (7/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /v3/api-docs
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /v3/api-docs using org.springframework.security.authorization.SingleResultAuthorizationManager@7f0954f7
+2026-11-04 21:12:46 [http-nio-8081-exec-6] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-11-04 21:12:46 [http-nio-8081-exec-6] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-11-04 21:12:49 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - Re-registering apps/APP-EVE-MS-EVENTS
+2026-11-04 21:12:49 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-11-04 21:12:49 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (5/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (6/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (7/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /v3/api-docs
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /v3/api-docs using org.springframework.security.authorization.SingleResultAuthorizationManager@7f0954f7
+2026-11-04 21:13:32 [http-nio-8081-exec-7] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-11-04 21:13:32 [http-nio-8081-exec-7] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-11-04 21:13:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:18:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (5/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (6/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (7/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /v3/api-docs
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /v3/api-docs using org.springframework.security.authorization.SingleResultAuthorizationManager@7f0954f7
+2026-11-04 21:19:35 [http-nio-8081-exec-9] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-11-04 21:19:35 [http-nio-8081-exec-9] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /api/sevent
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (5/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (6/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (7/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.authentication.ProviderManager - Authenticating request with JwtAuthenticationProvider (1/2)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.o.s.r.a.JwtGrantedAuthoritiesConverter - Looking for scopes in claim roles
+2026-11-04 21:19:45 [http-nio-8081-exec-10] DEBUG [app-eve-ms-events] o.s.s.o.s.r.a.JwtAuthenticationProvider - Authenticated token
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-11-04 21:19:45 [http-nio-8081-exec-10] DEBUG [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter$JwtAuthenticatedPrincipal@c94a9f39, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[FactorGrantedAuthority [authority=FACTOR_BEARER, issuedAt=2026-11-05T00:19:45.828795843Z], Manager]]
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Did not set SecurityContextHolder since already authenticated JwtAuthenticationToken [Principal=org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter$JwtAuthenticatedPrincipal@c94a9f39, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[FactorGrantedAuthority [authority=FACTOR_BEARER, issuedAt=2026-11-05T00:19:45.828795843Z], Manager]]
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.a.s.CompositeSessionAuthenticationStrategy - Preparing session with ChangeSessionIdAuthenticationStrategy (1/1)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /api/sevent
+2026-11-04 21:19:45 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /api/sevent using org.springframework.security.authorization.AuthenticatedAuthorizationManager@368950b5
+2026-11-04 21:19:45 [http-nio-8081-exec-10] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /api/sevent
+2026-11-04 21:19:45 [http-nio-8081-exec-10] DEBUG [app-eve-ms-events] o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult com.example.appevemsevents.Service.EventSimple.EventSimpleService.getByFilter(com.example.appevemsevents.Service.EventSimple.EventSimpleFilter); target is of class [com.example.appevemsevents.Service.EventSimple.EventSimpleService]
+2026-11-04 21:19:45 [http-nio-8081-exec-10] DEBUG [app-eve-ms-events] o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult com.example.appevemsevents.Service.EventSimple.EventSimpleService.getByFilter(com.example.appevemsevents.Service.EventSimple.EventSimpleFilter); target is of class [com.example.appevemsevents.Service.EventSimple.EventSimpleService]
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_13
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_22
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_23
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_15
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_24
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_25
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_26
+2026-11-04 21:19:46 [http-nio-8081-exec-10] INFO  [app-eve-ms-events] c.e.a.S.E.EventSimpleService - Elemento cacheado individualmente tras búsqueda masiva: api_event_21
+2026-11-04 21:19:46 [http-nio-8081-exec-10] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-11-04 21:23:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:28:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:33:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:38:48 [AsyncResolver-bootstrap-executor-%d] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:40:09 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Starting AppEveMsEventsApplication using Java 21.0.12.1 with PID 166130 (/home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events/target/classes started by mrfabian in /home/mrfabian/Desktop/FIUNI/7moSemestre/Web y Distribuidos/proy/app-eve-ms-events)
+2026-11-04 21:40:09 [main] DEBUG [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-11-04 21:40:09 [main] INFO  [app-eve-ms-events] c.e.a.AppEveMsEventsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 345 ms. Found 5 JPA repository interfaces.
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IBatchRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.ICategoriaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IEventRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.IPrecioRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.appevemsevents.Repository.ISectorRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-04 21:40:11 [main] INFO  [app-eve-ms-events] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-11-04 21:40:12 [main] INFO  [app-eve-ms-events] o.s.cloud.context.scope.GenericScope - BeanFactory id=e7cb86f2-91ef-3572-a491-9a319dd209f3
+2026-11-04 21:40:13 [main] INFO  [app-eve-ms-events] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-11-04 21:40:13 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-04 21:40:13 [main] INFO  [app-eve-ms-events] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-04 21:40:13 [main] INFO  [app-eve-ms-events] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3878 ms
+2026-11-04 21:40:13 [main] INFO  [app-eve-ms-events] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-04 21:40:13 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-11-04 21:40:14 [main] INFO  [app-eve-ms-events] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04 21:40:14 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-04 21:40:16 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4902c584
+2026-11-04 21:40:16 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-04 21:40:17 [main] INFO  [app-eve-ms-events] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://aws-0-us-east-1.pooler.supabase.com:6543/postgres?prepareThreshold=0]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.6
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04 21:40:19 [main] INFO  [app-eve-ms-events] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04 21:40:19 [main] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04 21:40:19 [main] INFO  [app-eve-ms-events] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-04 21:40:21 [main] TRACE [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.example.appevemsevents.Config.SecurityConfig$$SpringCGLIB$$0@5da20b76}
+2026-11-04 21:40:21 [main] DEBUG [app-eve-ms-events] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2026-11-04 21:40:21 [main] DEBUG [app-eve-ms-events] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, OAuth2ProtectedResourceMetadataFilter, BearerTokenAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-04 21:40:22 [main] INFO  [app-eve-ms-events] o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestClient.
+2026-11-04 21:40:23 [main] WARN  [app-eve-ms-events] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application is null : false
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2026-11-04 21:40:23 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - The response status is 200
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1793839224142 with initial instances count: 4
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Registering application APP-EVE-MS-EVENTS with eureka with status UP
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793839224177, current=UP, previous=STARTING]
+2026-11-04 21:40:24 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application APP-EVE-MS-EVENTS with eureka with status DOWN
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1793839224207, current=DOWN, previous=UP]
+2026-11-04 21:40:24 [main] WARN  [app-eve-ms-events] o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04 21:40:24 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-04 21:40:24 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-11-04 21:40:24 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-11-04 21:40:24 [DiscoveryClient-InstanceInfoReplicator-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
+2026-11-04 21:40:25 [main] INFO  [app-eve-ms-events] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-11-04 21:40:25 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2026-11-04 21:40:28 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Unregistering ...
+2026-11-04 21:40:28 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - deregister  status: 200
+2026-11-04 21:40:28 [main] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2026-11-04 21:40:28 [main] INFO  [app-eve-ms-events] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-04 21:40:28 [main] ERROR [app-eve-ms-events] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/example/appevemsevents/Config/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Logout, OAuth2ProtectedResourceMetadata, BearerTokenAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (1/1)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (5/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [PathPattern [GET /logout], PathPattern [POST /logout], PathPattern [PUT /logout], PathPattern [DELETE /logout]]
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking OAuth2ProtectedResourceMetadataFilter (6/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking BearerTokenAuthenticationFilter (7/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Did not process request since did not find bearer token
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=192.168.1.15, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /v3/api-docs
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /v3/api-docs using org.springframework.security.authorization.SingleResultAuthorizationManager@7f0954f7
+2026-11-04 21:40:46 [http-nio-8081-exec-2] DEBUG [app-eve-ms-events] o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-11-04 21:40:46 [http-nio-8081-exec-2] TRACE [app-eve-ms-events] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2026-11-04 21:40:49 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - Re-registering apps/APP-EVE-MS-EVENTS
+2026-11-04 21:40:49 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081: registering service...
+2026-11-04 21:40:49 [DiscoveryClient-HeartbeatExecutor-%d] INFO  [app-eve-ms-events] c.netflix.discovery.DiscoveryClient - DiscoveryClient_APP-EVE-MS-EVENTS/chris-laptop:app-eve-ms-events:8081 - registration status: 204
