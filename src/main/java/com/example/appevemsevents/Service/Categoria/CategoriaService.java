@@ -7,6 +7,7 @@ import com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult;
 import com.example.appevemsevents.Config.RedisCacheConfig;
 import jakarta.persistence.criteria.Predicate;
 import lombok.extern.slf4j.Slf4j;
+import org.openapitools.model.CreateEventCategoryDto;
 import org.openapitools.model.EventCategoryDto;
 import org.openapitools.model.UpdateEventCategoryDto;
 import org.springframework.cache.Cache;
@@ -30,6 +31,9 @@ public class CategoriaService extends UpdatableService<EventCategory, EventCateg
     protected CategoriaService(IBaseRepository<EventCategory> repository, CategoriaMapper mapper, CacheManager cacheManager) {
         super(repository, mapper);
         this.cacheManager = cacheManager;
+    }
+    @CachePut(value = RedisCacheConfig.CACHE_SD_EVENT_CATEGORIA, key = "'api_categoria_' + #result.id", condition = "#result.id != null")
+    public EventCategoryDto createCategory(CreateEventCategoryDto dto){return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
     @Override

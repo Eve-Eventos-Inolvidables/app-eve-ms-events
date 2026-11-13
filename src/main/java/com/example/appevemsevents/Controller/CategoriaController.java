@@ -8,8 +8,7 @@ import com.example.appevemsevents.Service.Categoria.CategoriaFilter;
 import com.example.appevemsevents.Service.Categoria.CategoriaService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.openapitools.model.EventCategoryDto;
-import org.openapitools.model.UpdateEventCategoryDto;
+import org.openapitools.model.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +21,11 @@ public class CategoriaController extends BaseController<EventCategory, EventCate
         super(service);
     }
 
+    @PostMapping
+    public Response<EventCategoryDto> create(@Valid @RequestBody CreateEventCategoryDto dto){
+        log.info("Se intenta crear la Categoria con el nombre {}",dto.getName());
+        return ResponseFactory.resourceCreated("Categoria creada correctamente", service.createCategory(dto));
+    }
     @PatchMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('Administrador', 'Manager')") // Modificar categorías
     public Response<EventCategoryDto> update(@PathVariable Long id, @Valid @RequestBody UpdateEventCategoryDto dto){
