@@ -2,6 +2,7 @@ package com.example.appevemsevents.Service.Precio;
 
 import com.example.appevecommon.Models.Event.Batch.SectorByBatch;
 import com.example.appevecommon.Repository.IBaseRepository;
+import com.example.appevecommon.Service.Exception.ResourceNotFoundException;
 import com.example.appevecommon.Service.UpdatableService;
 import com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult;
 import com.example.appevemsevents.Config.RedisCacheConfig;
@@ -16,9 +17,14 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -44,6 +50,64 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
 
             return criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
         };
+    }
+
+    @Transactional(readOnly = true)
+    @PreAuthorize("hasAnyAuthority('Cliente', 'Administrador', 'Manager')")
+    public List<SectorByBatchDto> getByIdsForEvent(Long eventId, List<Long> ids) {
+        if (eventId == null || eventId <= 0) {
+            throw new InvalidPriceLookupException("eventId debe ser un entero positivo.");
+        }
+        if (ids == null || ids.isEmpty()) {
+            throw new InvalidPriceLookupException("Debe enviarse al menos un ID de precio.");
+        }
+
+        Set<Long> uniqueIds = new LinkedHashSet<>();
+        for (Long id : ids) {
+            if (id == null || id <= 0) {
+                throw new InvalidPriceLookupException(
+                        "Cada ID de precio debe ser un entero positivo.");
+            }
+            uniqueIds.add(id);
+        }
+
+        List<SectorByBatch> records = repository.findAllById(uniqueIds);
+        Map<Long, SectorByBatch> recordsById = new LinkedHashMap<>();
+        for (SectorByBatch record : records) {
+            recordsById.put(record.getId(), record);
+        }
+
+        for (Long requestedId : uniqueIds) {
+            SectorByBatch record = recordsById.get(requestedId);
+            if (record == null) {
+                // BaseEntity's SQL restriction excludes archived records here.
+                throw new ResourceNotFoundException(requestedId);
+            }
+
+            if (record.getPrice() < 1) {
+                throw new InvalidPriceLookupException(
+                        "El precio asociado al ID " + requestedId + " no es válido.");
+            }
+            if (record.getSector() == null
+                    || record.getSector().getEvent() == null
+                    || record.getBatch() == null
+                    || record.getBatch().getEvent() == null) {
+                throw new InvalidPriceLookupException(
+                        "El ID " + requestedId + " no tiene sector, tanda y evento válidos.");
+            }
+
+            Long sectorEventId = record.getSector().getEvent().getId();
+            Long batchEventId = record.getBatch().getEvent().getId();
+            if (!eventId.equals(sectorEventId) || !eventId.equals(batchEventId)) {
+                throw new InvalidPriceLookupException(
+                        "El ID " + requestedId + " no pertenece al evento " + eventId + ".");
+            }
+        }
+
+        return uniqueIds.stream()
+                .map(recordsById::get)
+                .map(mapper::toDto)
+                .toList();
     }
 
     @Override
