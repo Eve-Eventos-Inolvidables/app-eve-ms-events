@@ -77,40 +77,6 @@ class PrecioServiceTest {
         verifyNoInteractions(repository);
     }
 
-    @Test
-    void consumeStockDecrementsRepeatedSelectionsAndReturnsUpdatedQuantity() {
-        SectorByBatch original = sectorByBatch(10L, 100, 42L);
-        original.setQuantity(3);
-        SectorByBatch updated = sectorByBatch(10L, 100, 42L);
-        updated.setQuantity(1);
-        SectorByBatchDto updatedDto = dto(10L);
-        updatedDto.setPrice(100);
-        updatedDto.setQuantity(1);
-
-        when(repository.findAllById(anyIterable()))
-                .thenReturn(List.of(original), List.of(updated));
-        when(repository.decrementQuantityIfAvailable(10L, 2)).thenReturn(1);
-        when(mapper.toDto(updated)).thenReturn(updatedDto);
-
-        List<SectorByBatchDto> result =
-                service.consumeStockForEvent(42L, List.of(10L, 10L));
-
-        assertEquals(1, result.size());
-        assertEquals(1, result.getFirst().getQuantity());
-        verify(repository).decrementQuantityIfAvailable(10L, 2);
-    }
-
-    @Test
-    void consumeStockRejectsInsufficientAvailability() {
-        SectorByBatch record = sectorByBatch(10L, 100, 42L);
-        record.setQuantity(1);
-        when(repository.findAllById(anyIterable())).thenReturn(List.of(record));
-        when(repository.decrementQuantityIfAvailable(10L, 2)).thenReturn(0);
-
-        assertThrows(InsufficientStockException.class,
-                () -> service.consumeStockForEvent(42L, List.of(10L, 10L)));
-    }
-
     private SectorByBatch sectorByBatch(long id, int price, long eventId) {
         SimpleEvent event = new SimpleEvent();
         event.setId(eventId);

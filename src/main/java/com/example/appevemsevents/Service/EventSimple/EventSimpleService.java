@@ -1,5 +1,6 @@
 package com.example.appevemsevents.Service.EventSimple;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.criteria.Predicate;
@@ -49,6 +50,20 @@ public class EventSimpleService extends
             }
             if (filter.getVisibleStart() != null) {
                 predicates.add(cb.greaterThanOrEqualTo(root.get("visibleStart"), filter.getVisibleStart()));
+            }
+            if (filter.getDateFrom() != null) {
+                predicates.add(
+                        cb.greaterThanOrEqualTo(
+                                root.<LocalDate>get("date"),
+                                filter.getDateFrom())
+                );
+            }
+            if (filter.getDateBefore() != null) {
+                predicates.add(
+                        cb.lessThan(
+                                root.<LocalDate>get("date"),
+                                filter.getDateBefore())
+                );
             }
 
             return cb.and(predicates.toArray(new Predicate[0]));
