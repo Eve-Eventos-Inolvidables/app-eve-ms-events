@@ -1,11 +1,11 @@
 package com.example.appevemsevents.Service.Precio;
 
 import com.example.appevecommon.Models.Event.Batch.SectorByBatch;
-import com.example.appevecommon.Repository.IBaseRepository;
 import com.example.appevecommon.Service.Exception.ResourceNotFoundException;
 import com.example.appevecommon.Service.UpdatableService;
 import com.example.appevecommon.Service.Utilities.Responses.Ok.PageResult;
 import com.example.appevemsevents.Config.RedisCacheConfig;
+import com.example.appevemsevents.Repository.IPrecioRepository;
 import jakarta.persistence.criteria.Predicate;
 import lombok.extern.slf4j.Slf4j;
 import org.openapitools.model.*;
@@ -31,9 +31,11 @@ import java.util.Set;
 public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatchDto, UpdateSectorByBatchDto, PrecioMapper, PrecioFilter> {
 
     private final CacheManager cacheManager;
+    private final IPrecioRepository precioRepository;
 
-    protected PrecioService(IBaseRepository<SectorByBatch> repository, PrecioMapper mapper, CacheManager cacheManager){
+    protected PrecioService(IPrecioRepository repository, PrecioMapper mapper, CacheManager cacheManager){
         super(repository,mapper);
+        this.precioRepository = repository;
         this.cacheManager = cacheManager;
     }
 
@@ -46,6 +48,12 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
                 predicateList.add(
                         criteriaBuilder.equal(root.get("price"), filter.getPrice())
                 );
+            }
+            if (filter.getEventId() != null) {
+                predicateList.add(criteriaBuilder.equal(
+                        root.get("sector").get("event").get("id"), filter.getEventId()));
+                predicateList.add(criteriaBuilder.equal(
+                        root.get("batch").get("event").get("id"), filter.getEventId()));
             }
 
             return criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
@@ -108,6 +116,113 @@ public class PrecioService extends UpdatableService<SectorByBatch, SectorByBatch
                 .map(recordsById::get)
                 .map(mapper::toDto)
                 .toList();
+    }
+
+    @Transactional
+    @PreAuthorize("hasAuthority('Cliente')")
+    public List<SectorByBatchDto> consumeStockForEvent(Long eventId, List<Long> ids) {
+        Map<Long, Long> requestedCounts = countRequestedIds(eventId, ids);
+        Map<Long, SectorByBatch> recordsById =
+                loadAndValidateRecordsForEvent(eventId, requestedCounts.keySet());
+
+        for (Map.Entry<Long, Long> request : requestedCounts.entrySet()) {
+            int amount;
+            try {
+                amount = Math.toIntExact(request.getValue());
+            } catch (ArithmeticException ex) {
+                throw new InvalidPriceLookupException(
+                        "La cantidad solicitada excede el rango soportado.");
+            }
+
+            SectorByBatch record = recordsById.get(request.getKey());
+            if (record.getQuantity() < amount) {
+                throw new InsufficientStockException(request.getKey());
+            }
+            if (precioRepository.decrementQuantityIfAvailable(request.getKey(), amount) != 1) {
+                throw new InsufficientStockException(request.getKey());
+            }
+        }
+
+        List<SectorByBatch> updatedRecords = repository.findAllById(requestedCounts.keySet());
+        Map<Long, SectorByBatch> updatedRecordsById = new LinkedHashMap<>();
+        for (SectorByBatch record : updatedRecords) {
+            updatedRecordsById.put(record.getId(), record);
+        }
+        return requestedCounts.keySet().stream()
+                .map(updatedRecordsById::get)
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Transactional
+    @PreAuthorize("hasAuthority('Cliente')")
+    public void restoreStockForEvent(Long eventId, List<Long> ids) {
+        Map<Long, Long> requestedCounts = countRequestedIds(eventId, ids);
+        loadAndValidateRecordsForEvent(eventId, requestedCounts.keySet());
+
+        for (Map.Entry<Long, Long> request : requestedCounts.entrySet()) {
+            int amount;
+            try {
+                amount = Math.toIntExact(request.getValue());
+            } catch (ArithmeticException ex) {
+                throw new InvalidPriceLookupException(
+                        "La cantidad a restaurar excede el rango soportado.");
+            }
+
+            if (precioRepository.restoreQuantity(request.getKey(), amount) != 1) {
+                throw new ResourceNotFoundException(request.getKey());
+            }
+        }
+    }
+
+    private Map<Long, Long> countRequestedIds(Long eventId, List<Long> ids) {
+        if (eventId == null || eventId <= 0) {
+            throw new InvalidPriceLookupException("eventId debe ser un entero positivo.");
+        }
+        if (ids == null || ids.isEmpty()) {
+            throw new InvalidPriceLookupException("Debe enviarse al menos un ID de precio.");
+        }
+
+        Map<Long, Long> requestedCounts = new LinkedHashMap<>();
+        for (Long id : ids) {
+            if (id == null || id <= 0) {
+                throw new InvalidPriceLookupException(
+                        "Cada ID de precio debe ser un entero positivo.");
+            }
+            requestedCounts.merge(id, 1L, Math::addExact);
+        }
+        return requestedCounts;
+    }
+
+    private Map<Long, SectorByBatch> loadAndValidateRecordsForEvent(
+            Long eventId,
+            Set<Long> ids) {
+        List<SectorByBatch> records = repository.findAllById(ids);
+        Map<Long, SectorByBatch> recordsById = new LinkedHashMap<>();
+        for (SectorByBatch record : records) {
+            recordsById.put(record.getId(), record);
+        }
+
+        for (Long id : ids) {
+            SectorByBatch record = recordsById.get(id);
+            if (record == null) {
+                throw new ResourceNotFoundException(id);
+            }
+            if (record.getPrice() < 1
+                    || record.getSector() == null
+                    || record.getSector().getEvent() == null
+                    || record.getBatch() == null
+                    || record.getBatch().getEvent() == null) {
+                throw new InvalidPriceLookupException(
+                        "El precio " + id + " no tiene datos válidos.");
+            }
+            if (!eventId.equals(record.getSector().getEvent().getId())
+                    || !eventId.equals(record.getBatch().getEvent().getId())) {
+                throw new InvalidPriceLookupException(
+                        "El precio " + id + " no pertenece al evento " + eventId + ".");
+            }
+        }
+        return recordsById;
     }
 
     @Override

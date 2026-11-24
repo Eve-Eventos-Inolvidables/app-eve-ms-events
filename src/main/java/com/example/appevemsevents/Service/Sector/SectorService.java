@@ -37,6 +37,10 @@ public class SectorService extends UpdatableService<Sector, SectorDto, UpdateSec
         return (root, query, criteriaBuilder) -> {
             if(filter == null) return criteriaBuilder.conjunction();
             List<Predicate> predicateList = new ArrayList<>();
+            if (filter.getEventId() != null) {
+                predicateList.add(criteriaBuilder.equal(
+                        root.get("event").get("id"), filter.getEventId()));
+            }
             return criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
         };
     }

@@ -4,8 +4,8 @@ import com.example.appevecommon.Models.Event.Batch.Batch;
 import com.example.appevecommon.Models.Event.Batch.SectorByBatch;
 import com.example.appevecommon.Models.Event.SimpleEvent;
 import com.example.appevecommon.Models.Event.Sector.Sector;
-import com.example.appevecommon.Repository.IBaseRepository;
 import com.example.appevecommon.Service.Exception.ResourceNotFoundException;
+import com.example.appevemsevents.Repository.IPrecioRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openapitools.model.SectorByBatchDto;
@@ -19,13 +19,13 @@ import static org.mockito.Mockito.*;
 
 class PrecioServiceTest {
 
-    private IBaseRepository<SectorByBatch> repository;
+    private IPrecioRepository repository;
     private PrecioMapper mapper;
     private PrecioService service;
 
     @BeforeEach
     void setUp() {
-        repository = mock(IBaseRepository.class);
+        repository = mock(IPrecioRepository.class);
         mapper = mock(PrecioMapper.class);
         CacheManager cacheManager = mock(CacheManager.class);
         service = new PrecioService(repository, mapper, cacheManager);
@@ -75,6 +75,40 @@ class PrecioServiceTest {
                 () -> service.getByIdsForEvent(42L, List.of(10L, 0L)));
 
         verifyNoInteractions(repository);
+    }
+
+    @Test
+    void consumeStockDecrementsRepeatedSelectionsAndReturnsUpdatedQuantity() {
+        SectorByBatch original = sectorByBatch(10L, 100, 42L);
+        original.setQuantity(3);
+        SectorByBatch updated = sectorByBatch(10L, 100, 42L);
+        updated.setQuantity(1);
+        SectorByBatchDto updatedDto = dto(10L);
+        updatedDto.setPrice(100);
+        updatedDto.setQuantity(1);
+
+        when(repository.findAllById(anyIterable()))
+                .thenReturn(List.of(original), List.of(updated));
+        when(repository.decrementQuantityIfAvailable(10L, 2)).thenReturn(1);
+        when(mapper.toDto(updated)).thenReturn(updatedDto);
+
+        List<SectorByBatchDto> result =
+                service.consumeStockForEvent(42L, List.of(10L, 10L));
+
+        assertEquals(1, result.size());
+        assertEquals(1, result.getFirst().getQuantity());
+        verify(repository).decrementQuantityIfAvailable(10L, 2);
+    }
+
+    @Test
+    void consumeStockRejectsInsufficientAvailability() {
+        SectorByBatch record = sectorByBatch(10L, 100, 42L);
+        record.setQuantity(1);
+        when(repository.findAllById(anyIterable())).thenReturn(List.of(record));
+        when(repository.decrementQuantityIfAvailable(10L, 2)).thenReturn(0);
+
+        assertThrows(InsufficientStockException.class,
+                () -> service.consumeStockForEvent(42L, List.of(10L, 10L)));
     }
 
     private SectorByBatch sectorByBatch(long id, int price, long eventId) {

@@ -8,4 +8,5 @@ import lombok.Setter;
 @Setter
 public class PrecioFilter extends PagedFilter {
     private Integer price;
+    private Long eventId;
 }
