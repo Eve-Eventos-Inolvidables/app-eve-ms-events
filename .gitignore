@@ -31,5 +31,6 @@ build/
 !**/src/test/**/build/
 #project
 logs/
+*.log
 ### VS Code ###
 .vscode/
