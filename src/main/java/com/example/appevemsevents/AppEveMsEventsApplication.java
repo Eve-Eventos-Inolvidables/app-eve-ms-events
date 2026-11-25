@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCaching
-@EnableScheduling
 public class AppEveMsEventsApplication {
 
 	public static void main(String[] args) {
